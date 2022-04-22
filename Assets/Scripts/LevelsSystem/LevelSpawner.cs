@@ -8,7 +8,7 @@ namespace TestProject.Levels
         [SerializeField] private Transform _playerTransform;
         [SerializeField] private Transform _parentObject;
 
-        private Level _currentLevel;
+        public Level _currentLevel;
 
         private void Awake()
         {

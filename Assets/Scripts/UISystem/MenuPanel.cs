@@ -2,7 +2,7 @@
 
 namespace TestProject.UISystem
 {
-    public class MenuPanel : MonoBehaviour, IEnablable
+    public class MenuPanel : MonoBehaviour, IEnablableAndDisablable
     {
         [SerializeField] MenuAnimation _menuAnimation;
 

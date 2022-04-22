@@ -6,19 +6,14 @@ namespace TestProject
 {
     public class GameStateHandler : MonoBehaviour
     {
-        private static event Action _startAction;
-        private static event Action _finishAction;
+        private static event Action StartAction;
+        private static event Action FinishAction;
 
         private static Dictionary<GlobalGameEvent, Action> _events = new Dictionary<GlobalGameEvent, Action>()
         {
-            { GlobalGameEvent.Start, _startAction },
-            { GlobalGameEvent.Finish, _finishAction }
+            { GlobalGameEvent.Start, StartAction },
+            { GlobalGameEvent.Finish, FinishAction }
         };
-
-        private void Start()
-        {
-            TriggerEvent(GlobalGameEvent.Start);
-        }
 
         public static void Subscribe(GlobalGameEvent gameEvent, Action eventReceiver)
         {
@@ -36,6 +31,11 @@ namespace TestProject
         {
             if (_events.ContainsKey(gameEvent))
                 _events[gameEvent]?.Invoke();
+        }
+
+        private void Start()
+        {
+            TriggerEvent(GlobalGameEvent.Start);
         }
     }
 }

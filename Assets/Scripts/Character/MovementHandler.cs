@@ -3,7 +3,7 @@ using TestProject.CharacterSystem;
 
 namespace TestProject.InputSystem
 {
-    public class MovementHandler : MonoBehaviour, IEnablable
+    public class MovementHandler : MonoBehaviour, IEnablableAndDisablable
     {
         [SerializeField] private Character _character;
 
@@ -23,14 +23,11 @@ namespace TestProject.InputSystem
         public void Disable()
         {
             _controllable.StopMoving();
-
             UnSubscribeToInput(_currentInputReceiver);
-            gameObject.SetActive(false);
         }
 
         public void Enable()
         {
-            gameObject.SetActive(true);
             SubsribeToInput(_currentInputReceiver);
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace TestProject
 {
-    public interface IEnablable
+    public interface IEnablableAndDisablable
     {
         public void Enable();
         public void Disable();
