@@ -1,6 +1,9 @@
-﻿public enum GlobalGameEvent
+﻿namespace TestProject
 {
-    Finish,
-    Start
+    public enum GlobalGameEvent
+    {
+        Finish,
+        Start
+    }
 }
 

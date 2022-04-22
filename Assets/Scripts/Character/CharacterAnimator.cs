@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TestProject
+namespace TestProject.CharacterSystem
 {
     public class CharacterAnimator : MonoBehaviour
     {

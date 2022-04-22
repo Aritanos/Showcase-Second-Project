@@ -1,7 +1,10 @@
-﻿public interface IEnablable
+﻿namespace TestProject
 {
-    public void Enable();
-    public void Disable();
+    public interface IEnablable
+    {
+        public void Enable();
+        public void Disable();
+    }
 }
 
 

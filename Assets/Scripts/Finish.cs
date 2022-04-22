@@ -1,21 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
-public class Finish : MonoBehaviour
+namespace TestProject
 {
-    private void OnTriggerEnter(Collider other)
+    public class Finish : MonoBehaviour
     {
-        if (other.GetComponent<IControllable>()!= null)
+        private void OnTriggerEnter(Collider other)
         {
-            TriggerGlobalGameEvent(GlobalGameEvent.Finish);
+            if (other.GetComponent<IControllable>() != null)
+            {
+                TriggerGlobalGameEvent(GlobalGameEvent.Finish);
+            }
         }
-    }
 
-    private void TriggerGlobalGameEvent(GlobalGameEvent gameEvent)
-    {
-        GetComponent<Collider>().enabled = false;
-        GameStateHandler.TriggerEvent(gameEvent);
+        private void TriggerGlobalGameEvent(GlobalGameEvent gameEvent)
+        {
+            GetComponent<Collider>().enabled = false;
+            GameStateHandler.TriggerEvent(gameEvent);
+        }
     }
 }

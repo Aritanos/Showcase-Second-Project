@@ -1,27 +1,31 @@
 ﻿using UnityEngine;
 
-public partial class InputHandler : MonoBehaviour
+namespace TestProject.InputSystem
 {
-    [SerializeField] MovementHandler _movementHandler;
-    [SerializeField] MouseInputReceiver _mouseReceiver;
-
-    private void Awake()
+    public class InputHandler : MonoBehaviour
     {
-        GameStateHandler.Subscribe(GlobalGameEvent.Start, EnableMovement);
-        GameStateHandler.Subscribe(GlobalGameEvent.Finish, DisableMovement);
+        [SerializeField] MovementHandler _movementHandler;
+        [SerializeField] MouseInputReceiver _mouseReceiver;
 
-        _movementHandler.SetInput(_mouseReceiver);
-    }
+        private void Awake()
+        {
+            GameStateHandler.Subscribe(GlobalGameEvent.Start, EnableMovement);
+            GameStateHandler.Subscribe(GlobalGameEvent.Finish, DisableMovement);
 
-    private void EnableMovement()
-    {
-        _movementHandler.Enable();
-    }
+            _movementHandler.SetInput(_mouseReceiver);
+        }
 
-    private void DisableMovement()
-    {
-        _movementHandler.Disable();
+        private void EnableMovement()
+        {
+            _movementHandler.Enable();
+        }
+
+        private void DisableMovement()
+        {
+            _movementHandler.Disable();
+        }
     }
 }
+
 
 

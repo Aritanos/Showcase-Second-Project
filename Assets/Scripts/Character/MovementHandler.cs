@@ -1,67 +1,72 @@
 ﻿using UnityEngine;
-using TestProject;
+using TestProject.CharacterSystem;
 
-public class MovementHandler : MonoBehaviour, IEnablable
+namespace TestProject.InputSystem
 {
-    [SerializeField] private Character _character;
+    public class MovementHandler : MonoBehaviour, IEnablable
+    {
+        [SerializeField] private Character _character;
 
-    private Vector3 _pointerPosition = Vector3.positiveInfinity;
-    private IControllable _controllable => _character;
+        private Vector3 _pointerPosition = Vector3.positiveInfinity;
+        private IControllable _controllable => _character;
 
-    private IInputReceiver _currentInputReceiver;
+        private IInputReceiver _currentInputReceiver;
 
-    public void SetInput(IInputReceiver receiver)
-    {        
-        if (_currentInputReceiver == null)
+        public void SetInput(IInputReceiver receiver)
         {
-            _currentInputReceiver = receiver;
+            if (_currentInputReceiver == null)
+            {
+                _currentInputReceiver = receiver;
+            }
         }
-    }
 
-    public void Disable()
-    {
-        _controllable.StopMoving();
+        public void Disable()
+        {
+            _controllable.StopMoving();
 
-        UnSubscribeToInput(_currentInputReceiver);
-        gameObject.SetActive(false);
-    }
+            UnSubscribeToInput(_currentInputReceiver);
+            gameObject.SetActive(false);
+        }
 
-    public void Enable()
-    {
-        gameObject.SetActive(true);
-        SubsribeToInput(_currentInputReceiver);
-    }
+        public void Enable()
+        {
+            gameObject.SetActive(true);
+            SubsribeToInput(_currentInputReceiver);
+        }
 
-    private void SubsribeToInput(IInputReceiver receiver)
-    {
-        receiver.PointerDown += OnPointerDown;
-        receiver.PointerHold += OnPointerHold;
-        receiver.PointerUp += OnPointerUp;    }
+        private void SubsribeToInput(IInputReceiver receiver)
+        {
+            receiver.PointerDown += OnPointerDown;
+            receiver.PointerHold += OnPointerHold;
+            receiver.PointerUp += OnPointerUp;
+        }
 
-    private void UnSubscribeToInput(IInputReceiver receiver)
-    {
+        private void UnSubscribeToInput(IInputReceiver receiver)
+        {
 
-        receiver.PointerDown -= OnPointerDown;
-        receiver.PointerHold -= OnPointerHold;
-        receiver.PointerUp -= OnPointerUp;    }
+            receiver.PointerDown -= OnPointerDown;
+            receiver.PointerHold -= OnPointerHold;
+            receiver.PointerUp -= OnPointerUp;
+        }
 
-    private void OnPointerDown(Vector3 position)
-    {
-        _pointerPosition = position;
-        _controllable.StartMoving();
-    }
+        private void OnPointerDown(Vector3 position)
+        {
+            _pointerPosition = position;
+            _controllable.StartMoving();
+        }
 
-    private void OnPointerHold(Vector3 position)
-    {
-        var delta = position.x - _pointerPosition.x;
-        _controllable.MoveSideways(delta);
-        _pointerPosition = position;
-    }
+        private void OnPointerHold(Vector3 position)
+        {
+            var delta = position.x - _pointerPosition.x;
+            _controllable.MoveSideways(delta);
+            _pointerPosition = position;
+        }
 
-    private void OnPointerUp()
-    {
-        _pointerPosition = Vector3.positiveInfinity;
-        _controllable.StopMoving();
+        private void OnPointerUp()
+        {
+            _pointerPosition = Vector3.positiveInfinity;
+            _controllable.StopMoving();
+        }
     }
 }
 

@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace TestProject
+namespace TestProject.CharacterSystem
 {
     public class Character : MonoBehaviour, IControllable
     {
@@ -43,4 +41,5 @@ namespace TestProject
         }
     }
 }
+
 
