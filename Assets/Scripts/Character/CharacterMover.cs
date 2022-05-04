@@ -22,9 +22,10 @@ namespace TestProject.CharacterSystem
             StartMovingAction?.Invoke();
         }
 
-        public void MoveSideways(float delta)
+        public void MoveSideways(Vector3 newPosition)
         {
-            _currentMovingDirection.x = delta * _sideMovingCoefficient;
+            var cameraDistance = Vector3.Distance(Camera.main.transform.position, _rigidBody.transform.position);
+            _currentMovingDirection.x = (Camera.main.ScreenToWorldPoint(new Vector3(newPosition.x, newPosition.y, cameraDistance))- _rigidBody.transform.position).x * _sideMovingCoefficient;
             _rigidBody.velocity = _currentMovingDirection;           
         }
 

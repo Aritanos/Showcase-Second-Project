@@ -53,10 +53,8 @@ namespace TestProject.InputSystem
         }
 
         private void OnPointerHold(Vector3 position)
-        {
-            var delta = position.x - _pointerPosition.x;
-            _controllable.MoveSideways(delta);
-            _pointerPosition = position;
+        {            
+            _controllable.MoveSideways(position);
         }
 
         private void OnPointerUp()
