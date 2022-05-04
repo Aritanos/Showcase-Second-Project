@@ -5,14 +5,14 @@ namespace TestProject.InputSystem
 {
     public class MovementHandler : MonoBehaviour, IEnablableAndDisablable
     {
-        [SerializeField] private Character _character;
+        [SerializeField] private CharacterMover _character;
 
         private Vector3 _pointerPosition = Vector3.positiveInfinity;
         private IControllable _controllable => _character;
 
-        private IInputReceiver _currentInputReceiver;
+        private InputReceiver _currentInputReceiver;
 
-        public void SetInput(IInputReceiver receiver)
+        public void SetInput(InputReceiver receiver)
         {
             if (_currentInputReceiver == null)
             {
@@ -31,14 +31,14 @@ namespace TestProject.InputSystem
             SubsribeToInput(_currentInputReceiver);
         }
 
-        private void SubsribeToInput(IInputReceiver receiver)
+        private void SubsribeToInput(InputReceiver receiver)
         {
             receiver.PointerDown += OnPointerDown;
             receiver.PointerHold += OnPointerHold;
             receiver.PointerUp += OnPointerUp;
         }
 
-        private void UnSubscribeToInput(IInputReceiver receiver)
+        private void UnSubscribeToInput(InputReceiver receiver)
         {
 
             receiver.PointerDown -= OnPointerDown;

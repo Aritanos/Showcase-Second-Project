@@ -8,7 +8,7 @@ namespace TestProject.UISystem
 
         public void TriggerAnimation()
         {
-            _anim.SetTrigger(Constants.ANIMATION_PARAM_SHOW);
+            _anim.SetTrigger(AnimatorParameters.ANIMATION_PARAM_SHOW);
         }
     }
 }

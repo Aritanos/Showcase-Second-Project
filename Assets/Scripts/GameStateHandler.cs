@@ -9,7 +9,7 @@ namespace TestProject
         private static event Action StartAction;
         private static event Action FinishAction;
 
-        private static Dictionary<GlobalGameEvent, Action> _events = new Dictionary<GlobalGameEvent, Action>()
+        private static readonly Dictionary<GlobalGameEvent, Action> _events = new Dictionary<GlobalGameEvent, Action>()
         {
             { GlobalGameEvent.Start, StartAction },
             { GlobalGameEvent.Finish, FinishAction }

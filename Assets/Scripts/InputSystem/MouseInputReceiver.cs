@@ -4,11 +4,11 @@ using UnityEngine.EventSystems;
 
 namespace TestProject.InputSystem
 {
-    public class MouseInputReceiver : MonoBehaviour, IInputReceiver
+    public class MouseInputReceiver : InputReceiver
     {
-        public event Action<Vector3> PointerDown;
-        public event Action<Vector3> PointerHold;
-        public event Action PointerUp;
+        public override event Action<Vector3> PointerDown;
+        public override event Action<Vector3> PointerHold;
+        public override event Action PointerUp;
 
         private void Update()
         {

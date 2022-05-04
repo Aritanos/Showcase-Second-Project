@@ -6,14 +6,21 @@ namespace TestProject.CharacterSystem
     {
         [SerializeField] private Animator _animator;
 
+        private void Start()
+        {
+            var mover = GetComponent<CharacterMover>();
+            mover.StartMovingAction += SetRunningAnimation;
+            mover.StopMovingAction += SetIdleAnimation;
+        }
+
         public void SetRunningAnimation()
         {
-            _animator.SetBool(Constants.ANIMATION_PARAM_MOVING, true);
+            _animator.SetBool(AnimatorParameters.ANIMATION_PARAM_MOVING, true);
         }
 
         public void SetIdleAnimation()
         {
-            _animator.SetBool(Constants.ANIMATION_PARAM_MOVING, false);
+            _animator.SetBool(AnimatorParameters.ANIMATION_PARAM_MOVING, false);
         }
     }
 }

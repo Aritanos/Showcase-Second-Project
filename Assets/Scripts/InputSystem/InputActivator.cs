@@ -2,10 +2,10 @@
 
 namespace TestProject.InputSystem
 {
-    public class InputHandler : MonoBehaviour
+    public class InputActivator : MonoBehaviour
     {
-        [SerializeField] MovementHandler _movementHandler;
-        [SerializeField] MouseInputReceiver _mouseReceiver;
+        [SerializeField] private MovementHandler _movementHandler;
+        [SerializeField] private InputReceiver _mouseReceiver;
 
         private void Awake()
         {
